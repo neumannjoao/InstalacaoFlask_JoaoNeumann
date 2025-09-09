@@ -16,7 +16,19 @@
 <h1> Usuarios</h1>
 <ul>
     {% for usuario in usuarios %}
-    <li>{{usuario.username}}</li>
+    <li>
+        <form action="{{url_for('hello.editarUsuario', usuario_id=usuario.id)}}",
+        method="POST">
+            <input type='text' name="nome_usuario" value="{{usuario.username}}" required> 
+            <button type="submit"> Atualizar </button>
+        </form>
+
+
+        <form action="{{url_for('hello.removerUsuario', usuario_id=usuario.id)}}",
+        method="POST">
+        <button action="submit"> Remover</button>
+    </form>
+    </li>
     {% endfor %}
 </ul>
 </body>
